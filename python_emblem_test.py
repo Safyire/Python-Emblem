@@ -14,7 +14,7 @@ enemy_def = random.randint(9, 19)
 
 
 def clear():
-    print("\n" * 60)  # Shout-outs to Python and PyCharm for not implementing a simple clear console function
+    print("\n" * 60)  # No way to clear the interpreter, apparently
 
 
 def how_to_play():
