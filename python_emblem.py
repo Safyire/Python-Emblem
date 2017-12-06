@@ -1,45 +1,81 @@
-import tkinter
+import tkinter as tk
 import random
+import time
 
-# Init
+# Game setup
 weapon_type = 0
 weapon_type_list = ["sword", "lance", "axe", "bow", "tome"]
-player_hp = random.randint(40, 60)
-player_str = random.randint(15, 25)
-player_def = random.randint(9, 19)
-enemy_hp = random.randint(40, 60)
-enemy_str = random.randint(10, 20)
-enemy_def = random.randint(9, 19)
-root = tkinter.Tk()
+player_hp = random.randint(20, 30)
+player_str = random.randint(6, 10)
+player_def = random.randint(2, 6)
+enemy_hp = random.randint(17, 27)
+enemy_str = random.randint(5, 9)
+enemy_def = random.randint(1, 5)
+# Tkinter layout setup
+root = tk.Tk()
+root.title("Python Emblem")
+# TODO: Replace the placeholder favicon
+root.iconbitmap("favicon.ico")
+label_title = tk.Label(root, text="Welcome to Python Emblem!", width=50, height=2)
+how_to_play_button = tk.Button(root, text="How to Play")
+change_weapon_button = tk.Button(root, text="Change Weapon")
+fight_button = tk.Button(root, text="Fight!")
+quit_button = tk.Button(root, text="Quit")
+
+
+def global_buttons():
+    global label_title
+    global how_to_play_button
+    global change_weapon_button
+    global fight_button
+    global quit_button
 
 
 def window_init():
-    root.title("Python Emblem")
-    # TODO: Replace the placeholder favicon
-    root.iconbitmap("favicon.ico")
-    label_title = tkinter.Label(root, text="Welcome to Python Emblem!", width=50, height=2)
-    how_to_play_button = tkinter.Button(root, text="How to play")
-    change_weapon_button = tkinter.Button(root, text="Change weapon")
-    fight_button = tkinter.Button(root, text="Fight!")
+    global_buttons()
+    label_title.grid(row=0)
+    how_to_play_button.grid(row=1)
+    how_to_play_button.config(command=lambda: button_clicked("how_to_play_button"))
+    change_weapon_button.grid(row=2)
+    fight_button.grid(row=3)
+    quit_button.grid(row=4)
 
-    label_title.grid(row=0, column=0)
-    how_to_play_button.grid(row=1, column=0)
-    change_weapon_button.grid(row=2, column=0)
-    fight_button.grid(row=3, column=0)
+
+def clear_window():
+    global_buttons()
+    how_to_play_button.grid_forget()
+    change_weapon_button.grid_forget()
+    fight_button.grid_forget()
+    quit_button.grid_forget()
+    quit_button.config(command=lambda: quit())  # It's not a bug, it's a feature!
+
+
+def button_clicked(button):
+    if button == "how_to_play_button":
+        how_to_play()
+    if button == "change_weapon_button":
+        change_weapon()
+    if button == "fight_button":
+        fight()
+    else:
+        print("button_clicked function error")
 
 
 def how_to_play():
     # TODO: WIP
+    print("how_to_play")
     return 0
 
 
 def change_weapon():
     # TODO: WIP
+    print("change_weapon")
     return 0
 
 
 def fight():
     # TODO: WIP
+    print("fight")
     return 0
 
 
