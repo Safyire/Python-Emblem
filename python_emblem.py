@@ -23,6 +23,16 @@ fight_button = tk.Button(root, text="Fight!")
 quit_button = tk.Button(root, text="Quit")
 
 
+def window_pos_init():
+    window_width = 350
+    window_height = 150
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+    x = (screen_width / 2) - (window_width / 2)
+    y = (screen_height / 2) - (window_height / 2)
+    root.geometry('%dx%d+%d+%d' % (window_width, window_height, x, y))
+
+
 def global_buttons():
     global label_title
     global how_to_play_button
@@ -65,7 +75,14 @@ def button_clicked(button):
 
 def how_to_play():
     clear_window()
-    print("how_to_play")
+    label_title.config(height=10, text="Python Emblem is a \"Sit and watch\" RPG where all you\n"
+                                       "can do is watch and pray your RNG turns out in your favor.\n\n"
+                                       "Stat explanations:\n"
+                                       "HP: Reach 0, and you're dead.\n"
+                                       "Str: Your strength.\n"
+                                       "Def: How well you can resist and defend the enemy's Str.\n")
+    htp_close_button = tk.Button(root, text="Close").grid(row=2)
+    htp_close_button.config(command=lambda: button_clicked(htp_close_button))
 
 
 def change_weapon():
@@ -79,6 +96,7 @@ def fight():
 
 
 def main():
+    window_pos_init()
     window_init()
 
 
