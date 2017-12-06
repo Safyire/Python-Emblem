@@ -64,21 +64,18 @@ def button_clicked(button):
 
 
 def how_to_play():
-    # TODO: WIP
+    clear_window()
     print("how_to_play")
-    return 0
 
 
 def change_weapon():
-    # TODO: WIP
+    clear_window()
     print("change_weapon")
-    return 0
 
 
 def fight():
-    # TODO: WIP
+    clear_window()
     print("fight")
-    return 0
 
 
 def main():
