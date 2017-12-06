@@ -37,8 +37,11 @@ def window_init():
     how_to_play_button.grid(row=1)
     how_to_play_button.config(command=lambda: button_clicked("how_to_play_button"))
     change_weapon_button.grid(row=2)
+    change_weapon_button.config(command=lambda: button_clicked("change_weapon_button"))
     fight_button.grid(row=3)
+    fight_button.config(command=lambda: button_clicked("fight_button"))
     quit_button.grid(row=4)
+    quit_button.config(command=lambda: quit())  # It's not a bug, it's a feature!
 
 
 def clear_window():
@@ -47,16 +50,15 @@ def clear_window():
     change_weapon_button.grid_forget()
     fight_button.grid_forget()
     quit_button.grid_forget()
-    quit_button.config(command=lambda: quit())  # It's not a bug, it's a feature!
 
 
 def button_clicked(button):
     if button == "how_to_play_button":
-        how_to_play()
+        return how_to_play()
     if button == "change_weapon_button":
-        change_weapon()
+        return change_weapon()
     if button == "fight_button":
-        fight()
+        return fight()
     else:
         print("button_clicked function error")
 
