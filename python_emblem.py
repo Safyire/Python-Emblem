@@ -75,12 +75,13 @@ def button_clicked(button):
 
 def how_to_play():
     clear_window()
-    label_title.config(height=10, text="Python Emblem is a \"Sit and watch\" RPG where all you\n"
-                                       "can do is watch and pray your RNG turns out in your favor.\n\n"
-                                       "Stat explanations:\n"
-                                       "HP: Reach 0, and you're dead.\n"
-                                       "Str: Your strength.\n"
-                                       "Def: How well you can resist and defend the enemy's Str.\n")
+    label_title.config(text="Python Emblem is a \"Sit and watch\" RPG where all you\n"
+                            "can do is watch and pray your RNG turns out in your favor.\n\n"
+                            "Stat explanations:\n"
+                            "HP: Reach 0, and you're dead.\n"
+                            "Str: Your strength.\n"
+                            "Def: How well you can resist and defend the enemy's Str.\n",
+                       height=10)
     htp_close_button = tk.Button(root, text="Close").grid(row=2)
     htp_close_button.config(command=lambda: button_clicked(htp_close_button))
 
