@@ -136,3 +136,13 @@ def main():
 main()
 
 root.mainloop()
+
+# I'd like to take this space to say that Tkinter is an
+# absolute nightmare to work with. Seriously, I'd rather
+# code this create task in asm than deal with this again.
+# Maybe my understanding of this module is bad, and that's
+# probably the most likely reason I hate it. If that's the
+# case, then I regret relying on a module I barely know.
+# Now I have to finish it since I won't have enough time to
+# start another project from scratch, not even in Scratch.
+# Ahhh
