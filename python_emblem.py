@@ -44,6 +44,7 @@ def global_buttons():
     global fight_button
     global quit_button
     global credit_label
+    # do not ever try this at home
 
 
 def window_init():
