@@ -2,19 +2,24 @@ import random
 import time
 import math
 
-# Init
 weapon_type = 0
 weapon_type_list = ["sword", "lance", "axe", "bow", "tome"]
-player_hp = random.randint(40, 60)
+player_hp = random.randint(30, 50)
 player_str = random.randint(10, 20)
 player_def = random.randint(9, 19)
-enemy_hp = random.randint(40, 60)
+player_spd = random.randint(5, 30)
+player_skl = random.randint(3, 15)
+player_luk = random.randint(1, 9)
+enemy_hp = random.randint(30, 50)
 enemy_str = random.randint(10, 20)
-enemy_def = random.randint(9, 19)
+enemy_def = random.randint(9, 13)
+enemy_spd = random.randint(5, 29)
+enemy_skl = random.randint(3, 15)
+enemy_luk = random.randint(0, 3)
 
 
 def clear():
-    print("\n" * 60)  # No way to clear the interpreter, apparently
+    print("\n" * 60)  # Shout-outs to Python and PyCharm for not implementing a simple clear console function
 
 
 def how_to_play():
@@ -23,8 +28,14 @@ def how_to_play():
           "can do is watch and pray your RNG turns out in your favor.\n\n"
           "Stat explanations:\n"
           "HP: Your total HP. Reach 0, and you're dead.\n"
-          "Str (Strength): Measure of your strength.\n"
-          "Def (Defense): Measure of how well you can resist the enemy's Str.\n"
+          "Atk (Attack): Measure of your strength.\n"
+          "Def (Defense): Measure of how well you can resist the enemy's Atk.\n"
+          "Spd (Speed): If your speed is ≥ 5 than the enemy's, you attack twice in a row!\n"
+          "Skl (Skill): How well you can land hits.\n"
+          "Luk (Luck): How well you can dodge attacks.\n\n"
+          "Your damage is calculated by (your Atk - enemy Def).\n"
+          "Your chances of landing a hit is determined by ((your Skl - enemy Luk) * 10)%.\n\n"
+          "Keep playing and level up!\n"
           )
     input("Press enter to continue.")
     main()
@@ -62,24 +73,41 @@ def start():
     print("Your current stats are:\n",
           "HP:", player_hp, "\n"
           "Str:", player_str, "\n"
-          "Def:", player_def, "\n")
-    input("Press enter to continue.")
+          "Def:", player_def, "\n"
+          "Spd:", player_spd, "\n"
+          "Skl:", player_skl, "\n"
+          "Luk:", player_luk, "\n")
     print("Your enemy's stats are:\n",
           "HP:", enemy_hp, "\n"
           "Str:", enemy_str, "\n"
-          "Def:", enemy_def, "\n")
+          "Def:", enemy_def, "\n"
+          "Spd:", enemy_spd, "\n"
+          "Skl:", enemy_skl, "\n"
+          "Luk:", enemy_luk, "\n")
     input("Press enter to FIGHT!")
     clear()
-    if player_str > enemy_def:
-        damage = player_str - enemy_def
-        print("You attack the enemy for", damage, "damage.")
-    else:
-        damage = 0
-        print("You attack the enemy for 0 damage.", "Wow, you're bad.")
     enemy_hp_current = enemy_hp
-    enemy_hp_current = enemy_hp_current - damage
-    print("¡Uf! Enemy has", str(enemy_hp_current) + "/" + str(enemy_hp), "HP left.")
-    input("Press enter to continue.")
+    while True:
+        if player_str > enemy_def:
+            if player_spd - enemy_spd >= 5:  # Double
+                damage = int((player_str - enemy_def) * 2)
+                print("You attack the enemy for", damage/2, "damage.\n"
+                      "You doubled the enemy! Dealt another", damage/2, "damage.")
+            else:
+                damage = int(player_str - enemy_def)
+                print("You attack the enemy for", damage, "damage.")
+        else:
+            damage = 0
+            print("You attack the enemy for 0 damage.", "Wow, you're bad.")
+        enemy_hp_current -= damage
+        if enemy_hp_current < 0:
+            print("Enemy has 0/" + str(enemy_hp), "left. The enemy falls!")
+            break
+        else:
+            print("Enemy has", str(enemy_hp_current) + "/" + str(enemy_hp), "HP left.")
+            input("Press enter to continue.")
+            time.sleep(0.25)
+            print("\n")
 
 
 def main():
