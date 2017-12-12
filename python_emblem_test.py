@@ -2,6 +2,7 @@ import random
 import time
 import math
 
+# Initialization
 weapon_type = 0
 weapon_type_list = ["sword", "lance", "axe", "bow", "tome"]
 player_hp = random.randint(30, 50)
@@ -87,27 +88,53 @@ def start():
     input("Press enter to FIGHT!")
     clear()
     enemy_hp_current = enemy_hp
+    player_hp_current = player_hp
     while True:
+        # Player Phase Start
+            # Player attack stage
         if player_str > enemy_def:
             if player_spd - enemy_spd >= 5:  # Double
                 damage = int((player_str - enemy_def) * 2)
-                print("You attack the enemy for", damage/2, "damage.\n"
-                      "You doubled the enemy! Dealt another", damage/2, "damage.")
+                print("You attack the enemy for", int(damage/2), "damage.\n"
+                      "You doubled the enemy! Dealt another", int(damage/2), "damage.")
             else:
                 damage = int(player_str - enemy_def)
-                print("You attack the enemy for", damage, "damage.")
+                print("You attack the enemy for", int(damage), "damage.")
         else:
             damage = 0
-            print("You attack the enemy for 0 damage.", "Wow, you're bad.")
+            print("You attack the enemy for 0 damage. Wow, you're bad.")
+            # Player attack stage end
         enemy_hp_current -= damage
         if enemy_hp_current < 0:
             print("Enemy has 0/" + str(enemy_hp), "left. The enemy falls!")
             break
         else:
             print("Enemy has", str(enemy_hp_current) + "/" + str(enemy_hp), "HP left.")
-            input("Press enter to continue.")
-            time.sleep(0.25)
-            print("\n")
+            # Enemy counterattack stage
+        print("")
+        if enemy_str > player_def:
+            if enemy_spd - player_spd >= 5:  # Double
+                damage = int((enemy_str - player_def) * 2)
+                print("The enemy counterattacks for", int(damage/2), "damage.\n"
+                      "The enemy doubles you! Dealt another", int(damage/2), "damage.")
+            else:
+                damage = int(enemy_str - player_def)
+                print("The enemy counterattacks for", int(damage), "damage.")
+        else:
+            damage = 0
+            print("The enemy counterattacks for 0 damage. ¯\_(ツ)_/¯")
+        player_hp_current -= damage
+        if player_hp_current < 0:
+            print("You have 0/" + str(player_hp), "left. You fell to the enemy!")
+            break
+        else:
+            print("You have", str(player_hp_current) + "/" + str(player_hp), "HP left.")
+            # Player counterattack stage end
+
+        print("")
+        input("Press enter to continue.")
+        time.sleep(0.25)
+        clear()
 
 
 def main():
