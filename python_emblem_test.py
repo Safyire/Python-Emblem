@@ -137,6 +137,21 @@ def start():
         clear()
 
 
+def enemy_fall():
+    # TODO: enemy_fall()
+    return 0
+
+
+def player_fall():
+    # TODO: player_fall()
+    return 0
+
+
+def level_calc():
+    # TODO: level_calc()
+    return 0
+
+
 def main():
     clear()
     print("Welcome to Python Emblem! Choose an option.")
