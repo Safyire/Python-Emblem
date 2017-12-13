@@ -11,16 +11,18 @@ player_def = random.randint(9, 19)
 player_spd = random.randint(5, 30)
 player_skl = random.randint(3, 15)
 player_luk = random.randint(1, 9)
+player_lvl = 1
 enemy_hp = random.randint(30, 50)
 enemy_str = random.randint(10, 20)
 enemy_def = random.randint(9, 13)
 enemy_spd = random.randint(5, 29)
 enemy_skl = random.randint(3, 15)
 enemy_luk = random.randint(0, 3)
+enemy_lvl = 1
 
 
 def clear():
-    print("\n" * 60)  # Shout-outs to Python and PyCharm for not implementing a simple clear console function
+    print("\n" * 60)  # "Clear console"
 
 
 def how_to_play():
@@ -139,17 +141,17 @@ def start():
 
 def enemy_fall():
     # TODO: enemy_fall()
-    return 0
+    print("")
 
 
 def player_fall():
     # TODO: player_fall()
-    return 0
+    print("")
 
 
 def level_calc():
     # TODO: level_calc()
-    return 0
+    print("")
 
 
 def main():
