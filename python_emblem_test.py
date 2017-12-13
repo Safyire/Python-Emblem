@@ -151,6 +151,7 @@ def player_fall():
 
 def level_calc():
     # TODO: level_calc()
+    exp = 0
     print("")
 
 
