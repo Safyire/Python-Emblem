@@ -1,20 +1,19 @@
 import random
 import time
-import math
 
 # Initialization
 weapon_type = 0
 weapon_type_list = ["sword", "lance", "axe", "bow", "tome"]
 player_hp = random.randint(30, 50)
 player_str = random.randint(10, 20)
-player_def = random.randint(9, 19)
+player_def = random.randint(9, 13)
 player_spd = random.randint(5, 30)
 player_skl = random.randint(3, 15)
 player_luk = random.randint(1, 9)
 player_lvl = 1
 enemy_hp = random.randint(30, 50)
 enemy_str = random.randint(10, 20)
-enemy_def = random.randint(9, 13)
+enemy_def = random.randint(4, 9)
 enemy_spd = random.randint(5, 29)
 enemy_skl = random.randint(3, 15)
 enemy_luk = random.randint(0, 3)
@@ -107,7 +106,7 @@ def start():
             print("You attack the enemy for 0 damage. Wow, you're bad.")
             # Player attack stage end
         enemy_hp_current -= damage
-        if enemy_hp_current < 0:
+        if enemy_hp_current <= 0:
             print("Enemy has 0/" + str(enemy_hp), "left. The enemy falls!")
             break
         else:
@@ -126,7 +125,7 @@ def start():
             damage = 0
             print("The enemy counterattacks for 0 damage. ¯\_(ツ)_/¯")
         player_hp_current -= damage
-        if player_hp_current < 0:
+        if player_hp_current <= 0:
             print("You have 0/" + str(player_hp), "left. You fell to the enemy!")
             break
         else:
