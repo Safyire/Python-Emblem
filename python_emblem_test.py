@@ -11,6 +11,7 @@ player_spd = random.randint(5, 30)
 player_skl = random.randint(3, 15)
 player_luk = random.randint(1, 9)
 player_lvl = 1
+player_exp = 0
 enemy_hp = random.randint(30, 50)
 enemy_str = random.randint(10, 20)
 enemy_def = random.randint(4, 9)
@@ -44,6 +45,7 @@ def how_to_play():
 
 
 def weapon_set():
+    # Incomplete and unused function
     clear()
     change_weapon = 0
     cur_weapon = "Iron Sword"
@@ -108,7 +110,7 @@ def start():
         enemy_hp_current -= damage
         if enemy_hp_current <= 0:
             print("Enemy has 0/" + str(enemy_hp), "left. The enemy falls!")
-            break
+            level_calc()
         else:
             print("Enemy has", str(enemy_hp_current) + "/" + str(enemy_hp), "HP left.")
             # Enemy counterattack stage
@@ -138,22 +140,27 @@ def start():
         clear()
 
 
-def enemy_fall():
-    # TODO: enemy_fall()
-    print("")
-
-
-def player_fall():
-    # TODO: player_fall()
-    print("")
-
-
 def level_calc():
-    # TODO: level_calc()
-    exp = 0
-    print("")
+    exp = random.randint(50,75)
+    print("You gained", str(exp), "EXP!")
+    player_exp += exp
+    if player_exp > 100:
+        print("You leveled up! Stats have increased!")
+        inc_str = random.randint(0,2)
+        inc_def = random.randint(0,2)
+        inc_spd = random.randint(0,2)
+        inc_skl = random.randint(0,2)
+        inc_luk = random.randint(0,2)
+        inc_hp = random.randint(0,2)
+        player_str += inc_str
+        player_def += inc_def
+        player_spd += inc_spd
+        player_skl += inc_skl
+        player_luk += inc_luk
+        player_hp += inc_hp
+    main()
 
-
+    
 def main():
     clear()
     print("Welcome to Python Emblem! Choose an option.")
