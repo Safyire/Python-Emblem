@@ -76,30 +76,33 @@ def start():
     clear()
     print("Your current stats are:\n",
           "HP:", player_hp, "\n"
-          "Str:", player_str, "\n"
-          "Def:", player_def, "\n"
-          "Spd:", player_spd, "\n"
-          "Skl:", player_skl, "\n"
-          "Luk:", player_luk, "\n")
+                            "Str:", player_str, "\n"
+                                                "Def:", player_def, "\n"
+                                                                    "Spd:", player_spd, "\n"
+                                                                                        "Skl:", player_skl, "\n"
+                                                                                                            "Luk:",
+          player_luk, "\n")
     print("Your enemy's stats are:\n",
           "HP:", enemy_hp, "\n"
-          "Str:", enemy_str, "\n"
-          "Def:", enemy_def, "\n"
-          "Spd:", enemy_spd, "\n"
-          "Skl:", enemy_skl, "\n"
-          "Luk:", enemy_luk, "\n")
+                           "Str:", enemy_str, "\n"
+                                              "Def:", enemy_def, "\n"
+                                                                 "Spd:", enemy_spd, "\n"
+                                                                                    "Skl:", enemy_skl, "\n"
+                                                                                                       "Luk:",
+          enemy_luk, "\n")
     input("Press enter to FIGHT!")
     clear()
     enemy_hp_current = enemy_hp
     player_hp_current = player_hp
     while True:
         # Player Phase Start
-            # Player attack stage
+        # Player attack stage
         if player_str > enemy_def:
             if player_spd - enemy_spd >= 5:  # Double
                 damage = int((player_str - enemy_def) * 2)
-                print("You attack the enemy for", int(damage/2), "damage.\n"
-                      "You doubled the enemy! Dealt another", int(damage/2), "damage.")
+                print("You attack the enemy for", int(damage / 2), "damage.\n"
+                                                                   "You doubled the enemy! Dealt another",
+                      int(damage / 2), "damage.")
             else:
                 damage = int(player_str - enemy_def)
                 print("You attack the enemy for", int(damage), "damage.")
@@ -118,8 +121,9 @@ def start():
         if enemy_str > player_def:
             if enemy_spd - player_spd >= 5:  # Double
                 damage = int((enemy_str - player_def) * 2)
-                print("The enemy counterattacks for", int(damage/2), "damage.\n"
-                      "The enemy doubles you! Dealt another", int(damage/2), "damage.")
+                print("The enemy counterattacks for", int(damage / 2), "damage.\n"
+                                                                       "The enemy doubles you! Dealt another",
+                      int(damage / 2), "damage.")
             else:
                 damage = int(enemy_str - player_def)
                 print("The enemy counterattacks for", int(damage), "damage.")
@@ -141,26 +145,34 @@ def start():
 
 
 def level_calc():
-    exp = random.randint(50,75)
+    global player_exp
+    global player_str
+    global player_def
+    global player_spd
+    global player_skl
+    global player_luk
+    global player_hp
+    exp = random.randint(50, 75)
     print("You gained", str(exp), "EXP!")
     player_exp += exp
     if player_exp > 100:
         print("You leveled up! Stats have increased!")
-        inc_str = random.randint(0,2)
-        inc_def = random.randint(0,2)
-        inc_spd = random.randint(0,2)
-        inc_skl = random.randint(0,2)
-        inc_luk = random.randint(0,2)
-        inc_hp = random.randint(0,2)
+        inc_str = random.randint(0, 2)
+        inc_def = random.randint(0, 2)
+        inc_spd = random.randint(0, 2)
+        inc_skl = random.randint(0, 2)
+        inc_luk = random.randint(0, 2)
+        inc_hp = random.randint(0, 2)
         player_str += inc_str
         player_def += inc_def
         player_spd += inc_spd
         player_skl += inc_skl
         player_luk += inc_luk
         player_hp += inc_hp
+    input("Press enter to continue.")
     main()
 
-    
+
 def main():
     clear()
     print("Welcome to Python Emblem! Choose an option.")
